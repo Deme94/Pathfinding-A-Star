@@ -1,3 +1,3 @@
-# Pathfinding-A-Star
+# Pathfinding A*
 
 ![Crayta capture](/Crayta.jpg?raw=true)
