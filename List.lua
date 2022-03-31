@@ -1,4 +1,4 @@
-local List = {}
+List = {}
 
 -- Create a Table with list functions
 function List:New()
@@ -8,7 +8,17 @@ function List:New()
   -- entry table
   t._et = {}
   
+  -- Overrite [] operator
   -- Get the value at index from the list
+  setmetatable(t, {
+	  -- The first argument is the table that's indexed, and the second argument is the index,
+	  -- ie. the arguments map to `the_table[index]`.
+	  __index = function (the_table, index)
+	    return t._et[index]
+	  end
+  })
+  
+  
   function t:Get(index)
 	return self._et[index]
   end
@@ -66,7 +76,7 @@ function List:New()
   -- clear List
   function t:Clear()
     for i=1,t:Size() do
-      self:RemoveIndex(i)
+      self:Pop()
     end
   end
 
