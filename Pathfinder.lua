@@ -58,12 +58,12 @@ function Pathfinder:FindPath(origin, destination)
 	for _, n in self.path:Iterator() do
 		print(n:GetName())
 	end
-	print('Target -> ' .. self.path:Get(2):GetName())
+	print('Target -> ' .. self.path[2]:GetName())
 	---------------------------------------------------
 	
 	-- Return target node (next node from origin)
 	if self.path:Size() == 0 then return nil end
-	return self.path:Get(2)
+	return self.path[2]
 end
 
 -- Find the path using the A* search algorithm
@@ -82,7 +82,7 @@ function A_Star(self)
 				end
 			end
 		end
-		node = self.open:Get(minNi)
+		node = self.open[minNi]
 		-- For each successor of node
 		local successors = node.NavMeshNode:GetProperties().SuccessorNodes
 		for i=1, #successors do
@@ -137,7 +137,7 @@ function extractPath(self)
 	-- Inverse the inversed path to get the correct path
 	local i = inversedPath:Size()
 	while i > 0 do
-		self.path:Add(inversedPath:Get(i))
+		self.path:Add(inversedPath[i])
 		i = i - 1
 	end	
 end
