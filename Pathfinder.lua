@@ -17,15 +17,15 @@ function Pathfinder:FindPath(origin, destination)
 	if destination == self.goal then 
 		local n = nil
 		while self.path:Size() > 0 and target ~= origin do
-			n = self.path:Get(1)
+			n = self.path[1]
 			if n == origin then
 				
 				-- DEBUG ----------------------------------------
-				--print('Target -> ' .. self.path:Get(2):GetName())
+				--print('Target -> ' .. self.path[2]:GetName())
 				-------------------------------------------------
 				
 				-- Return target node (next node from origin)
-				return self.path:Get(2)
+				return self.path[2]
 			end
 			self.path:RemoveIndex(1) -- Pop useless node (this is a target's parent node)
 		end
