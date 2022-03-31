@@ -18,11 +18,6 @@ function List:New()
 	  end
   })
   
-  
-  function t:Get(index)
-	return self._et[index]
-  end
-  
   -- Set a value at index on to the list
   function t:Set(index, value)
 	table.insert(self._et, index, value)
@@ -76,7 +71,7 @@ function List:New()
   -- clear List
   function t:Clear()
     for i=1,t:Size() do
-      self:Pop()
+      table.remove(self._et, i)
     end
   end
 
